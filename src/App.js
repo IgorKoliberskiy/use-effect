@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Details from "./components/Details";
+import List from "./components/List";
+import { useEffect, useState } from "react";
 
 function App() {
+  let [info, setInfo] = useState([]);
+  let [loading, setLoading] = useState(true);
+  let [CreatedDetails, setCreatedDetails] = useState(null)
+
+  
+  
+  let fetchData = function() {
+    fetch(
+      "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/users.json"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setInfo(data);
+        setLoading(false);
+      })
+      .catch(error => console.error(error));
+  };
+  
+  
+  function handleChangeList(event) {
+    setCreatedDetails(<Details props={{id :event.target.id, name: event.target.textContent}}></Details>)
+  }
+
+  useEffect(fetchData, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {loading && <p>Loading...</p>}
+      <div className="App">
+        <List props={info} click={handleChangeList} />
+        {CreatedDetails ? CreatedDetails : ''}
+      </div>
+    </>
   );
 }
 

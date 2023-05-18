@@ -36,3 +36,65 @@
     transform: rotate(360deg);
   }
 }
+
+.App {
+  display: flex;
+  justify-content: space-between;
+  width: 650px;
+  margin-top: 30px;
+}
+
+ul {
+  margin: 0;
+}
+
+.list-item, .details-name, .details-data {
+  list-style-type: none;
+  border: 1px solid #e9e9e9;
+  display: flex;
+  padding: 10px;
+}
+
+.list-item, .details-data {
+  font-size: 14px;
+}
+.list-item {
+  width: 300px;
+}
+
+.details-name, .details-data {
+  width: 100%;
+}
+
+.details-name {
+  font-size: 20px;
+}
+.details-name, .details-data {
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.list-item:hover {
+  background-color: #5b8cef;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+.person-container {
+  margin-left: 30px;
+  width: 240px;
+}
+
+.avatar {
+  width: 240px;
+  height: 240px;
+}
+.person-details {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 240px;
+}
